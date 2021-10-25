@@ -87,7 +87,7 @@
           ease-out
         "
       >
-        <component :is="menuItem.icon" class="w-6 h-6"></component>
+        <component :is="menuItem.icon" class="w-6 h-6 text-sm"></component>
         <span class="pl-4">{{ menuItem.title }}</span>
       </a>
     </div>
