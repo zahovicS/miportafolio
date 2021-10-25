@@ -9,6 +9,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    colors: {
+      darkex: {
+        light: '#353535',
+        DEFAULT: '#222222',
+        // dark: '#202e78',
+      }
+    }
   },
   variants: {
     extend: {},
