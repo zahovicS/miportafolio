@@ -1,85 +1,65 @@
 <template>
-  <nav class="bg-darkex">
+  <nav class="w-full fixed bg-darkex z-50">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="flex justify-between">
-        <div class="flex space-x-4">
+      <div class="flex w-full">
+        <div class="flex justify-between space-x-4 w-full">
           <!-- logo -->
           <div>
-            <a
-              href="#"
-              class="
-                flex
-                items-center
-                py-5
-                px-2
-                text-gray-700
-                hover:text-gray-900
-              "
-            >
-              <svg
-                class="h-6 w-6 mr-1 text-blue-400"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                />
-              </svg>
-              <span class="font-bold">Z|S</span>
+            <a href="#" class="flex items-center py-5 px-2 hover:text-gray-900">
+              <span class="font-bold text-dark-200 bg-yellow-400 p-3">Z|S</span>
             </a>
           </div>
+          <div class="flex">
+            <!-- primary nav -->
+            <div
+              v-for="menuItem in menuItems"
+              :key="menuItem.id"
+              class="hidden md:flex items-center mr-auto space-x-4 uppercase"
+            >
+              <a
+                :href="`${menuItem.link}`"
+                class="
+                  py-5
+                  font-semibold
+                  px-3
+                  text-white
+                  hover:text-yellow-400
+                  border-transparent border-b-2
+                  hover:border-b-2 hover:border-current
+                "
+                >{{ menuItem.title }}</a
+              >
+            </div>
 
-          <!-- primary nav -->
-          <div
-            class="hidden md:flex items-center justify-end mr-auto space-x-1"
-          >
-            <a href="#" class="py-5 px-3 text-white hover:text-yellow-200"
-              >Inicio</a
-            >
-            <a href="#" class="py-5 px-3 text-white hover:text-yellow-200"
-              >Acerca de mí</a
-            >
-            <a href="#" class="py-5 px-3 text-white hover:text-yellow-200"
-              >Mis proyectos</a
-            >
-            <a href="#" class="py-5 px-3 text-white hover:text-yellow-200"
-              >Contacto</a
-            >
+            <!-- button -->
+            <div class="hidden md:flex items-center mx-4">
+              <a
+                href=""
+                class="
+                  py-2
+                  px-2
+                  bg-darkex-light
+                  hover:bg-darkex
+                  text-white
+                  hover:text-yellow-400
+                  rounded-lg
+                  transition
+                  duration-300
+                "
+                ><SunIcon
+              /></a>
+            </div>
           </div>
-        </div>
-
-        <!-- secondary nav -->
-        <div class="hidden md:flex items-center space-x-1">
-          <a
-            href=""
-            class="
-              py-2
-              px-2
-              bg-darkex-light
-              hover:bg-darkex
-              text-white
-              hover:text-yellow-200
-              rounded-lg
-              transition
-              duration-300
-            "
-            ><SunIcon
-          /></a>
         </div>
 
         <!-- mobile button goes here -->
         <div class="md:hidden flex items-center">
           <button
-            class="mobile-menu-button"
+            class="mobile-menu-button focus:outline-none"
             type="button"
             @click="toggleNavbar()"
           >
-            <MenuAlt3Icon class="w-6 h-6" />
+            <MenuAlt3Icon class="w-6 h-6 text-yellow-400" />
           </button>
         </div>
       </div>
@@ -87,23 +67,61 @@
 
     <!-- mobile menu -->
     <div
-      :class="{ hidden: !showMenu, block: showMenu }"
-      class="mobile-menu md:hidden"
+      :class="{ hidden: !showMenu, block: showMenu, 'h-auto': showMenu }"
+      class="mobile-menu md:hidden h-0 transition-all ease-out duration-500"
     >
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Features</a>
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Pricing</a>
+      <a
+        v-for="menuItem in menuItems"
+        :key="menuItem.id"
+        :href="`${menuItem.link}`"
+        class="
+          uppercase
+          block
+          py-3
+          px-6
+          font-semibold
+          text-white
+          hover:bg-yellow-400 hover:text-darkex
+          flex
+          duration-500
+          ease-out
+        "
+      >
+        <component :is="menuItem.icon" class="w-6 h-6"></component>
+        <span class="pl-4">{{ menuItem.title }}</span>
+      </a>
     </div>
   </nav>
 </template>
 
 <script>
-import { MenuAlt3Icon, SunIcon } from '@vue-hero-icons/outline'
+import {
+  MenuAlt3Icon,
+  SunIcon,
+  HomeIcon,
+  AnnotationIcon,
+  BeakerIcon,
+  FingerPrintIcon,
+} from '@vue-hero-icons/outline'
 
 export default {
   name: 'Navbar',
-  components: { MenuAlt3Icon, SunIcon },
+  components: {
+    MenuAlt3Icon,
+    HomeIcon,
+    SunIcon,
+    AnnotationIcon,
+    BeakerIcon,
+    FingerPrintIcon,
+  },
   data: () => ({
     showMenu: false,
+    menuItems: [
+      { icon: 'HomeIcon', title: 'Inicio', link: '#!' },
+      { icon: 'FingerPrintIcon', title: 'Acerca de mí', link: '#!' },
+      { icon: 'BeakerIcon', title: 'Mis proyectos', link: '#!' },
+      { icon: 'AnnotationIcon', title: 'Contacto', link: '#!' },
+    ],
   }),
   methods: {
     toggleNavbar() {
