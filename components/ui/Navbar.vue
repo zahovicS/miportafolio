@@ -1,5 +1,16 @@
 <template>
-  <nav class="w-full fixed bg-darkex z-50">
+  <nav
+    class="
+      w-full
+      fixed
+      bg-darkex
+      z-50
+      backdrop-filter backdrop-blur-lg
+      bg-opacity-80
+      shadow-lg
+      md:shadow-none
+    "
+  >
     <div class="max-w-6xl mx-auto px-4">
       <div class="flex w-full">
         <div class="flex justify-between space-x-4 w-full">
@@ -26,6 +37,9 @@
                   hover:text-yellow-400
                   border-transparent border-b-2
                   hover:border-b-2 hover:border-current
+                  font-mulish
+                  text-sm
+                  tracking-wider
                 "
                 >{{ menuItem.title }}</a
               >

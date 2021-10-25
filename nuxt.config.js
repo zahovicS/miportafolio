@@ -12,11 +12,16 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script: [
+      {
+        src: "https://kit.fontawesome.com/996400f4a1.js", crossorigin: "anonymous"
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -37,7 +42,9 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://tailwindcss.com/docs/guides/nuxtjs
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    // https://google-fonts.nuxtjs.org/setup
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,7 +64,18 @@ export default {
       lang: 'en'
     }
   },
-
+  googleFonts: {
+    families: {
+      Roboto: true,
+      'Mulish': true,
+      'Montserrat': [200, 400, 800, 900],
+      Lato: [100, 300],
+      Raleway: {
+        wght: [100, 400],
+        ital: [100]
+      },
+    },
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }

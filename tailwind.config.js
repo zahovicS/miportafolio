@@ -16,6 +16,13 @@ module.exports = {
         // dark: '#202e78',
       }
     }
+    ,
+    fontFamily: {
+      'montserrat': '"Montserrat", sans-serif',
+      'mulish': '"Mulish", sans-serif',
+      'display': ['Oswald'],
+      'body': ['"Mulish"', 'sans-serif'],
+    }
   },
   variants: {
     extend: {},
